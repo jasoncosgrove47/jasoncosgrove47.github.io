@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jason Cosgrove, PhD | AI for biomedical discovery</title>
+<meta name="description" content="Hybrid scientist × engineer building agentic AI workflows for biomedical discovery and validating them in the lab.">
+<meta property="og:title" content="Jason Cosgrove, PhD">
+<meta property="og:description" content="Hybrid scientist × engineer building agentic AI workflows for biomedical discovery and validating them in the lab.">
+<meta property="og:image" content="assets/photo.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%233b4678'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'>JC</text></svg>">
+<style>
+  :root {
+    --navy: #3b4678;
+    --navy-deep: #2a3361;
+    --accent: #2c3a8c;
+    --bg: #fbfbfd;
+    --surface: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #5a5e6e;
+    --line: #e3e5ee;
+    --chip: #eef0f8;
+    --serif: "Charter", "Bitstream Charter", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #13151d; --surface: #1b1e29; --ink: #ecedf2; --muted: #a3a7b8;
+      --line: #2c3040; --chip: #262a3a; --accent: #9fb0ff;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font: 17px/1.6 var(--sans); }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 10; background: var(--navy-deep); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  nav .brand { color: #fff; font-family: var(--serif); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  nav ul { display: flex; gap: 22px; list-style: none; overflow-x: auto; scrollbar-width: none; }
+  nav ul a { color: #dfe3f5; text-decoration: none; font-size: 15px; white-space: nowrap; }
+  nav ul a:hover { color: #fff; }
+
+  /* hero */
+  header.hero { background: var(--navy); color: #fff; padding: 64px 0 56px; }
+  .hero .wrap { display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: center; }
+  .hero img { width: 180px; height: 200px; object-fit: cover; border-radius: 50% / 46%; border: 4px solid #fff; }
+  .hero h1 { font-size: 44px; }
+  .hero .role { color: #cfd5ee; margin-top: 6px; }
+  .hero .tagline { font-family: var(--serif); font-size: 22px; line-height: 1.45; margin-top: 18px; max-width: 640px; }
+  .hero .tagline strong { color: #fff; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px;
+         border: 1px solid rgba(255,255,255,.45); color: #fff; text-decoration: none; font-size: 15px; }
+  .btn:hover { background: rgba(255,255,255,.12); }
+  .btn.primary { background: #fff; color: var(--navy-deep); border-color: #fff; font-weight: 600; }
+  .btn.primary:hover { background: #e9ecf8; }
+
+  /* sections */
+  section { padding: 64px 0 8px; scroll-margin-top: 56px; }
+  section h2 { font-size: 30px; color: var(--ink); margin-bottom: 8px; }
+  section h2::after { content: ""; display: block; width: 48px; height: 3px; background: var(--navy); margin-top: 10px; }
+  .lede { color: var(--muted); max-width: 720px; margin: 14px 0 28px; }
+  blockquote { font-family: var(--serif); font-size: 21px; line-height: 1.5; border-left: 3px solid var(--navy);
+               padding: 4px 0 4px 20px; margin: 24px 0; max-width: 760px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px 22px 20px; }
+  .card h3 { font-size: 19px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 16px; }
+  .card .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { background: var(--chip); color: var(--ink); font-size: 13px; padding: 3px 9px; border-radius: 999px; }
+  .card .links { margin-top: 12px; font-size: 15px; }
+  .status { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 6px; display: block; }
+
+  /* timeline */
+  .timeline { list-style: none; border-left: 2px solid var(--line); margin-left: 6px; }
+  .timeline li { position: relative; padding: 0 0 24px 26px; }
+  .timeline li::before { content: ""; position: absolute; left: -8px; top: 7px; width: 14px; height: 14px; border-radius: 50%;
+                         background: var(--bg); border: 2px solid var(--navy); }
+  .timeline .when { font-size: 14px; color: var(--muted); }
+  .timeline h3 { font-size: 19px; }
+  .timeline h3 span { font-weight: 400; font-style: italic; }
+  .timeline p { color: var(--muted); margin-top: 4px; max-width: 760px; }
+
+  /* publications */
+  .pubs { list-style: none; counter-reset: p; }
+  .pubs li { counter-increment: p; position: relative; padding: 0 0 20px 38px; max-width: 820px; }
+  .pubs li::before { content: counter(p); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%;
+                     background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center; }
+  .pubs .title { font-weight: 600; }
+  .pubs .meta { color: var(--muted); font-size: 15px; }
+  .pubs .desc { font-family: var(--serif); font-style: italic; margin-top: 4px; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .plain { list-style: none; }
+  .plain li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+
+  footer { margin-top: 64px; background: var(--navy-deep); color: #cfd5ee; padding: 40px 0; }
+  footer a { color: #fff; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: center; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 18px; }
+  footer small { display: block; margin-top: 6px; color: #9aa2c6; }
+
+  @media (max-width: 760px) {
+    body { font-size: 16px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 22px; text-align: left; }
+    .hero img { width: 130px; height: 145px; }
+    .hero h1 { font-size: 34px; }
+    .hero .tagline { font-size: 19px; }
+    .grid, .two { grid-template-columns: 1fr; }
+    nav ul { gap: 16px; }
+    nav .brand { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Jason Cosgrove</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <img src="assets/photo.png" alt="Portrait of Jason Cosgrove">
+    <div>
+      <h1>Jason Cosgrove, PhD</h1>
+      <p class="role">Principal Scientist, Computational Medicine · Co-founder, C3 Bioscience · Paris</p>
+      <p class="tagline"><strong>Hybrid scientist × engineer.</strong> I build agentic AI workflows for biomedical discovery, then validate them in the lab.</p>
+      <div class="buttons">
+        <a class="btn primary" href="cv/CV_JasonCosgrove.pdf">Download CV</a>
+        <a class="btn" href="https://github.com/jasoncosgrove47">GitHub</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=gH0WDeIAAAAJ&amp;hl=en">Google Scholar</a>
+        <a class="btn" href="https://www.linkedin.com/in/jason-cosgrove-18537a53/">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <blockquote>My goal is to build safe AI systems for diverse biomedical applications. I combine safety-critical systems engineering, biology and computational biology to develop end-to-end discovery workflows.</blockquote>
+      <p class="lede">Most people work as either a biologist or an engineer. For over a decade I have worked between the two: I build AI and computational pipelines, then go into the lab to test their predictions. My background spans immunology, haematology and oncology, and I have worked in academia, pharma R&amp;D and start-ups.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>What I do</h2>
+      <p class="lede">Four threads run through my work.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Agentic discovery, validated at the bench</h3>
+          <p>In pharma R&amp;D I build proof-of-concept agentic workflows for early discovery, in which AI agents assemble the analysis pipelines and prioritised targets go on to lab validation. I then work with AI and engineering teams to take them to production scale.</p>
+          <div class="tags"><span class="tag">Agentic AI</span><span class="tag">Target discovery</span><span class="tag">Lab validation</span></div>
+        </div>
+        <div class="card">
+          <h3>Evidence for decisions</h3>
+          <p>With business development teams, I evaluate external assets and opportunities. I build target opportunity packages that pull together omics and other data to inform in-licensing decisions.</p>
+          <div class="tags"><span class="tag">Due diligence</span><span class="tag">Multi-omics</span><span class="tag">Biomarkers</span></div>
+        </div>
+        <div class="card">
+          <h3>Test-first, safety-minded engineering</h3>
+          <p>My PhD, run between immunology and a safety-critical systems engineering group, developed a test-driven approach to building multi-agent systems. Acceptance tests were derived from requirements, and arguments showed each model was fit for purpose. Predictions were then validated in the lab.</p>
+          <div class="tags"><span class="tag">Multi-agent systems</span><span class="tag">Verification &amp; validation</span><span class="tag">Uncertainty quantification</span></div>
+        </div>
+        <div class="card">
+          <h3>Teaching scientists to use AI</h3>
+          <p>I lead AI training for the British Society for Immunology, a nationwide programme teaching biologists to build their own AI workflows. I have also taught at Institut Pasteur, ENS, Sorbonne, Oxford and Imperial.</p>
+          <div class="tags"><span class="tag">AI upskilling</span><span class="tag">Workshops</span><span class="tag">Mentoring</span></div>
+        </div>
+      </div>
+
+      <h3 style="font-size:22px;margin:44px 0 18px">Experience</h3>
+      <ul class="timeline">
+        <li><div class="when">2024 – now</div><h3>Principal Scientist, Computational Medicine <span>Pharma R&amp;D, France</span></h3>
+          <p>Computational biology lead for precision oncology and immuno-oncology projects. I build agentic early-discovery workflows, evaluate external assets, and contribute to Data &amp; AI strategy.</p></li>
+        <li><div class="when">2025 – now</div><h3>Co-founder &amp; Principal Consultant <span>C3 Bioscience</span></h3>
+          <p>AI and computational biology expertise on demand. I helped two biotech start-ups prepare pre-seed data packages, using mechanistic analyses of public datasets to de-risk their programmes for investors. I also deliver AI training, including at Institut Pasteur. <a href="https://c3bioscience.com">c3bioscience.com</a></p></li>
+        <li><div class="when">Now</div><h3>AI Training Lead <span>British Society for Immunology</span></h3>
+          <p>I lead the Society's AI training initiatives for immunologists.</p></li>
+        <li><div class="when">Ongoing</div><h3>Academic–private partnerships <span>Institut Curie &amp; Imperial College London</span></h3>
+          <p>I manage partnership research projects that develop new experimental and computational tools for drug discovery.</p></li>
+        <li><div class="when">2018 – 2024</div><h3>Postdoctoral Fellow <span>Institut Curie, Paris</span></h3>
+          <p>I used multi-omics, lineage barcoding and metabolic profiling to find targets and biomarkers in blood and immune cell development. I mined NHANES population-health data with interpretable machine learning, and secured ~€4M in funding (ERC, Wellcome Trust, industry).</p></li>
+        <li><div class="when">2013 – 2017</div><h3>PhD <span>University of York, UK</span></h3>
+          <p>I combined engineering, machine learning and imaging to study immune cell niches, building CXCL13Sim test-first. Earlier degrees: MSc in Bioinformatics &amp; Systems Biology (UCC) and BSc in Biomedical, Health &amp; Life Sciences (UCD).</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects &amp; code</h2>
+      <p class="lede">Open-source tools and the analysis code behind my papers.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>CXCL13Sim</h3>
+          <p>A multiscale multi-agent simulation of B-cell migration in the lymph node, built with acceptance-test-driven development (Java, MASON, JUnit).</p>
+          <div class="links"><a href="https://github.com/jasoncosgrove47/CXCL13Sim">github.com/jasoncosgrove47/CXCL13Sim</a></div>
+        </div>
+        <div class="card">
+          <h3>CellDestiny</h3>
+          <p>An R Shiny application for visualising and analysing single-cell lineage-tracing data (co-developer).</p>
+          <div class="links"><a href="https://github.com/jasoncosgrove47/CellDestiny">Code</a> · <a href="https://doi.org/10.3389/fmed.2022.919345">Paper</a></div>
+        </div>
+        <div class="card">
+          <h3>Analysis code for papers</h3>
+          <p>Single-cell RNA-seq analyses of haematopoietic stem and progenitor cells, for papers in <em>Nature Cell Biology</em>, <em>Nature Communications</em> and <em>eLife</em>.</p>
+          <div class="links"><a href="https://github.com/jasoncosgrove47/Gerber_et_al_2023">Gerber 2023</a> · <a href="https://github.com/jasoncosgrove47/Urbanus_Cosgrove_etal_2023">Urbanus 2023</a> · <a href="https://github.com/jasoncosgrove47/Eisele-et-al-2021">Eisele 2022</a></div>
+        </div>
+        <div class="card">
+          <span class="status">In progress</span>
+          <h3>Biomedical evidence MCP server</h3>
+          <p>An MCP server and Claude skill that gather public evidence (Open Targets, ClinicalTrials.gov, Europe PMC) for drug-repurposing questions, checked by an evaluation suite written test-first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <h2>Selected publications</h2>
+      <p class="lede">15 peer-reviewed publications. The full list is on <a href="https://scholar.google.com/citations?user=gH0WDeIAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+      <ol class="pubs">
+        <li><div class="title"><a href="https://doi.org/10.64898/2026.09.07.747966">The pentose phosphate pathway regulates myelo-lymphoid lineage specification</a></div>
+          <div class="meta"><strong>Cosgrove J</strong>, Donada A, Lyne A, et al. <em>Nature Communications</em> (accepted, 2026)</div>
+          <div class="desc">Metabolic state-fate mapping shows that stem cell metabolism can be targeted to steer immune cell production, validated in vivo.</div></li>
+        <li><div class="title"><a href="https://doi.org/10.1038/s42255-024-01031-w">A call for accessible tools to unlock single-cell immunometabolism research</a></div>
+          <div class="meta"><strong>Cosgrove J</strong>, et al. <em>Nature Metabolism</em> (2024)</div>
+          <div class="desc">A first-author perspective, written with leading international immunometabolism labs, on the tools the field needs.</div></li>
+        <li><div class="title"><a href="https://doi.org/10.1038/s41556-023-01291-w">Breast cancer remotely imposes a myeloid bias on haematopoietic stem cells by reprogramming the bone marrow niche</a></div>
+          <div class="meta">Gerber-Ferder Y, <strong>Cosgrove J</strong>, et al. <em>Nature Cell Biology</em> (2023)</div>
+          <div class="desc">Tumours reprogramme the bone marrow niche from a distance, pushing stem cells towards pro-tumour myeloid output.</div></li>
+        <li><div class="title"><a href="https://doi.org/10.1038/s41467-020-17135-2">B cell zone reticular cell microenvironments shape CXCL13 gradient formation</a></div>
+          <div class="meta"><strong>Cosgrove J</strong>, Novkovic M, et al. <em>Nature Communications</em> (2020)</div>
+          <div class="desc">PhD paper: agent-based simulation and optimisation of immune cell dynamics, with predictions validated by imaging and knockout mice.</div></li>
+        <li><div class="title"><a href="https://doi.org/10.1109/tcbb.2018.2843339">Using emulation to engineer and understand simulations of biological systems</a></div>
+          <div class="meta">Alden K, <strong>Cosgrove J</strong>, Coles M, Timmis J. <em>IEEE/ACM Trans. Comput. Biol. Bioinform.</em> (2020)</div>
+          <div class="desc">A machine-learning emulator workflow that makes evaluating multi-agent simulations far faster, enabling multi-objective optimisation and Bayesian uncertainty analysis.</div></li>
+        <li><div class="title"><a href="https://doi.org/10.1002/psp4.12018">Agent-based modeling in systems pharmacology</a></div>
+          <div class="meta"><strong>Cosgrove J</strong>, Butler J, Alden K, et al. <em>CPT: Pharmacometrics &amp; Systems Pharmacology</em> (2015)</div>
+          <div class="desc">A tutorial introducing agent-based modelling to pharmacologists, with preclinical drug-discovery case studies.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="wrap">
+      <h2>Teaching &amp; mentoring</h2>
+      <div class="two" style="margin-top:24px">
+        <ul class="plain">
+          <li>AI Training Lead, British Society for Immunology</li>
+          <li>AI and computational biology training, Institut Pasteur</li>
+          <li>Computational biology workshops organised at ENS &amp; Institut Pasteur</li>
+        </ul>
+        <ul class="plain">
+          <li>Guest lecturer: Oxford, Imperial College London, Sorbonne, ENS, Shanghai Jiao Tong</li>
+          <li>Supervision of PhD students and researchers from mathematics, biology, computer science and statistics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <strong>Get in touch</strong>
+      <small>Paris, France · open to conversations about AI for biomedicine</small>
+    </div>
+    <div class="links">
+      <a href="mailto:jason.cosgrove47@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/jason-cosgrove-18537a53/">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=gH0WDeIAAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://github.com/jasoncosgrove47">GitHub</a>
+      <a href="https://c3bioscience.com">C3 Bioscience</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
